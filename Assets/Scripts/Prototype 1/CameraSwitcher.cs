@@ -4,6 +4,8 @@ public class CameraSwitcher : MonoBehaviour
 {
     public Camera camera1; // First camera
     public Camera camera2; // Second camera
+    public AudioListener audioListener1;
+    public AudioListener audioListener2;
     private bool isCamera1Active = true; // Tracks which camera is active
 
     void Start()
@@ -29,5 +31,15 @@ public class CameraSwitcher : MonoBehaviour
 
         camera1.enabled = isCamera1Active;
         camera2.enabled = !isCamera1Active;
+        if (camera1.enabled)
+        {
+            audioListener1.enabled = true;
+            audioListener2.enabled = false;
+        }
+        else
+        {
+            audioListener1.enabled = false;
+            audioListener2.enabled = true;
+        }
     }
 }
