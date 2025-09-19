@@ -19,13 +19,11 @@ namespace PersonalProject
             {
                 Instantiate(enemyMoveXPrefab, new Vector3(playerObj.transform.position.x, playerObj.transform.position.y, playerObj.transform.position.z + spawnPosZ[i]), enemyMoveXPrefab.transform.rotation);
             }
-            InvokeRepeating("SpawnEnemy", 0, spawnInterval);
         }
 
-        // Update is called once per frame
-        void Update()
+        public void InvokeSpawnEnemy()
         {
-
+            InvokeRepeating("SpawnEnemy", 0, spawnInterval);
         }
         void SpawnEnemy()
         {
