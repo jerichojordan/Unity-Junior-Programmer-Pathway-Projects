@@ -4,7 +4,6 @@ public class EnemyFollowX : MonoBehaviour
 {
     private float speed = 6.0f;
     private float xBound = 15.0f;
-    private float zDistance = 25.0f;
     private GameObject playerObj;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,10 +16,6 @@ public class EnemyFollowX : MonoBehaviour
     {
         FollowPlayerX();
         RestrictEnemyMoveX();
-        if (transform.position.z + zDistance < playerObj.transform.position.z)
-        {
-            Destroy(gameObject);
-        }
     }
     void FollowPlayerX()
     {

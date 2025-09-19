@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyMoveDown : MonoBehaviour
@@ -11,19 +10,23 @@ public class EnemyMoveDown : MonoBehaviour
     public bool isUsingAccel;
     private Vector3 playerPos;
     private Vector3 moveDirection;
+    private float currentPlayerPosZ;
+    private Transform playerTransform;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerPos = GameObject.Find("Player").transform.position;
+        playerTransform = GameObject.Find("Player").transform;
+        playerPos = playerTransform.position;
         moveDirection = (playerPos - transform.position).normalized;
     }
 
     // Update is called once per frame
     void Update()
     {
+        currentPlayerPosZ = playerTransform.position.z;
         MoveDown();
-        if (transform.position.z < zBound) Destroy(gameObject);
+        if (transform.position.z < currentPlayerPosZ + zBound) Destroy(gameObject);
     }
     void MoveDown()
     {
