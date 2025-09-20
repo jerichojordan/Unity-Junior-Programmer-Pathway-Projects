@@ -13,6 +13,7 @@ public class CameraSwitcher : MonoBehaviour
         // Ensure one camera is enabled, and the other is disabled at the start
         camera1.enabled = true;
         camera2.enabled = false;
+        audioListener2.enabled = false;
     }
 
     void Update()
