@@ -5,10 +5,13 @@ public class EnemyFollowX : MonoBehaviour
     private float speed = 6.0f;
     private float xBound = 15.0f;
     private GameObject playerObj;
+    private Animator enemyAnimator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerObj = GameObject.Find("Player");
+        enemyAnimator = GetComponentInChildren<Animator>();
+        enemyAnimator.SetFloat("Speed_f", 0f);
     }
 
     // Update is called once per frame
