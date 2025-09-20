@@ -10,7 +10,7 @@ namespace Protoype2
         private float horizontalInput;
         private float speed = 20.0f;
         private float xRange = 20;
-        public GameObject projectilePrefab;
+        //public GameObject projectilePrefab;
 
 
         // Update is called once per frame
