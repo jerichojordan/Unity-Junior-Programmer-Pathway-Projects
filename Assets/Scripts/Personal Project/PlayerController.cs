@@ -11,21 +11,21 @@ namespace PersonalProject
         private float zBound = -5.0f;
         private Animator playerAnim;
         private Vector3 startPos;
-        [SerializeField] private UIManager uIManager;
-        [SerializeField] private SpawnManager spawnManager;
-
+        public bool isPlaying;
+        [SerializeField] private GameManager gameManager;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             playerAnim = GetComponentInChildren<Animator>();
             startPos = transform.position;
+            isPlaying = false;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (uIManager.isPlaying)
+            if (isPlaying)
             {
                 MovePlayer();
                 ConstrainPlayerMovement();
@@ -73,16 +73,12 @@ namespace PersonalProject
             else if (other.CompareTag("Enemy"))
             {
                 //Debug.Log("Game Over");
-                uIManager.setGameOverUI(true);
-                uIManager.isPlaying = false;
-                spawnManager.StopSpawnEnemy();
+                gameManager.GameOver();
             }
             else if (other.CompareTag("Finish"))
             {
                 //Debug.Log("Finish");
-                uIManager.setWinUI(true);
-                uIManager.isPlaying = false;
-                spawnManager.StopSpawnEnemy();
+                gameManager.FinishGame();
             }
         }
         public void ResetPlayerPosition()

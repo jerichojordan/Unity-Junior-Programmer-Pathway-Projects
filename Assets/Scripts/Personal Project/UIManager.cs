@@ -5,8 +5,7 @@ namespace PersonalProject
     public class UIManager : MonoBehaviour
     {
 
-        [SerializeField] private SpawnManager spawnManager;
-        [SerializeField] private PlayerController playerController;
+        [SerializeField] private GameManager gameManager;
         [SerializeField] private GameObject startUI;
         [SerializeField] private GameObject gameOverUI;
         [SerializeField] private GameObject winUI;
@@ -15,17 +14,17 @@ namespace PersonalProject
         public void HandleStartButton()
         {
             setStartUI(false);
-            StartGame();
+            gameManager.StartGame();
         }
         public void HandleRestartGameOverButton()
         {
             setGameOverUI(false);
-            StartGame();
+            gameManager.StartGame();
         }
         public void HandleRestartWinButton()
         {
             setWinUI(false);
-            StartGame();
+            gameManager.StartGame();
         }
         public void setStartUI(bool active)
         {
@@ -38,12 +37,6 @@ namespace PersonalProject
         public void setWinUI(bool active)
         {
             winUI.SetActive(active);
-        }
-        public void StartGame()
-        {
-            isPlaying = true;
-            spawnManager.InvokeSpawnEnemy();
-            playerController.ResetPlayerPosition();
         }
     }
 
